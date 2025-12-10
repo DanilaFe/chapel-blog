@@ -81,6 +81,15 @@
 
   {{< file_download_min fname="Print.chpl" lang="chapel" >}}
 
+  The program above can be {{< sidenote "right" "compiled" >}}
+  The '--no-checks' flag is used here to disable runtime checks that
+  utilize language features not yet supported by Dyno's code generation.
+  {{< /sidenote >}}
+  with ``--dyno --no-checks`` to produce an executable that prints the
+  following output:
+
+  {{< file_download fname="converter.good" lang="text" >}}
+
   Looking ahead, we plan to continue expanding the set of supported language
   features and standard modules that Dyno can compile. In the near term we
   will be directing our focus to fully resolving 'writeln' itself, and
