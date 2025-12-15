@@ -126,7 +126,7 @@
   {{< file_download_min fname="Print.chpl" lang="chapel" >}}
 
   The program above can be {{< sidenote "right" "compiled" >}}
-  The '--no-checks' flag is used here to disable runtime checks that
+  The <code>--no-checks</code> flag is used here to disable runtime checks that
   utilize language features not yet supported by Dyno's code generation.
   {{< /sidenote >}}
   with ``--dyno --no-checks`` to produce an executable that prints the
