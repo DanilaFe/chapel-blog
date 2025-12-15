@@ -1,0 +1,2 @@
+splitinit.chpl:9: error: type mismatch between declared type and initialization expression
+splitinit.chpl:6: error: cannot pass const to non-const
