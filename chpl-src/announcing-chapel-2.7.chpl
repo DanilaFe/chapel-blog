@@ -32,9 +32,9 @@
   As you may have seen in [previous]({{< relref
   "announcing-chapel-2.6#improvements-to-the-dyno-compiler-front-end"
   >}}) [release]({{< relref
-  "announcing-chapel-2.5#dyno-support-for-chapel-features" >}})
+  "announcing-chapel-2.5#improvements-to-the-dyno-compiler-front-end" >}})
   [announcements]({{< relref
-  "announcing-chapel-2.4#dyno-compiler-improvements" >}}), _Dyno_ is
+  "announcing-chapel-2.4#dyno-support-for-chapel-features" >}}), _Dyno_ is
   the name of our effort to modernize and improve the Chapel compiler.
   Dyno improves error messages, allows incremental type resolution,
   and enables the [development of language tooling]({{< relref
@@ -55,8 +55,52 @@
 
   #### More Language Features
 
+  Dyno's resolver for types and calls has seen the usual steady stream
+  of improvements. In this release, some notable changes include:
 
-  _TODO: Daniel's section_
+  * improvements for array formals and array element type queries
+  * improvements to [split-initialization](https://chapel-lang.org/docs/language/spec/variables.html#split-initialization) of variables
+  * support for more compiler-generated casts
+
+  The following screenshots show an editing session in which Dyno-inferred
+  type information is rendered in-line when editing the corresponding code
+  examples. The first example is that of array formals:
+
+  {{< file_download_min fname="array-formals.chpl" lang="chapel" >}}
+  {{< figure class="fullwide" src="./dyno-array-formals.png" alt="Dyno displaying inferred type information for array formals" >}}
+
+  In the above example, we use the same generic function `foo` to accept
+  both a regular (default-rectangualar) array and a block-distributed array.
+  Both of these arrays are accepted as normal, and queries in the formal type
+  extract the domain and element type information. The `infoA` and `infoB`
+  variables therefore contain accurate descriptions of the arrays passed to
+  `foo`.
+
+  The second example demonstrates new support for generated casts.
+
+  {{< file_download_min fname="casts.chpl" lang="chapel" >}}
+  {{< figure class="fullwide" src="./dyno-casts.png" alt="Dyno displaying inferred type information for generated casts" >}}
+
+  A cast from an integer-string tuple is performed to create a real-integer
+  tuple, casting the integer to a real and the string to an integer. Also, a
+  cast from an enum constant of type `color` is converted to a `param` value of
+  type `bytes`. Finally, notice that the language server is also showing the
+  inferred numeric values corresponding to the enum constants (`2` for `green`
+  and `3` for `blue`).
+
+  The final example demonstrates Dyno's improved support for
+  split-initialization of variables.
+
+  {{< file_download_min fname="splitinit.chpl" lang="chapel" >}}
+  {{< figure class="fullwide" src="./dyno-splitinit.png" alt="Dyno displaying inferred type information for split-initialized variables" >}}
+
+  Here, the `const` variables `c` and `C` are initialized by calling a
+  function with `out` formals. This is a new capability in the 2.7 version
+  of Dyno, as is one of the formals being an array, and the initialization
+  occurring at module scope --- lots of improvements in one small example!
+  Additionally, Dyno now properly rejects the attempt to split-initialize
+  an integer variable with a real value, but allows the reverse, where a
+  coercion can take place.
 
   #### Generating Executable Code
 
