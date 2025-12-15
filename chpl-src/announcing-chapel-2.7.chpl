@@ -144,7 +144,7 @@
 
   ### For More Information
 
-  If you have questions about Chapel 2.6 or any of its new features,
+  If you have questions about Chapel 2.7 or any of its new features,
   please reach out on Chapel's [Discord
   channel](https://discord.gg/xu2xg45yqH), [Discourse
   group](https://chapel.discourse.group/), or one of our other
@@ -152,10 +152,5 @@
   addition, we're always interested in hearing about how we can make
   the Chapel language, libraries, implementation, and tools more
   useful to you.
-
-  {{< changetable >}}
-  | Date         | Change                                                      |
-  |:-------------|:----------------------------------------------------------------------------------|
-  | Sept 26, 2025  | Fixed dynamic library calls to use `c_int` rather than `int`  |
 
 */
