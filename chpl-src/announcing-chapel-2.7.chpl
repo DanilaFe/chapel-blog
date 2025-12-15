@@ -58,7 +58,7 @@
   Dyno's resolver for types and calls has seen the usual steady stream
   of improvements. In this release, some notable changes include:
 
-  * improvements for array formals and array element type queries
+  * improvements for array formals and array formal type queries
   * improvements to [split-initialization](https://chapel-lang.org/docs/language/spec/variables.html#split-initialization) of variables
   * support for more compiler-generated casts
 
